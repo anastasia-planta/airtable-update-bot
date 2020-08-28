@@ -42,7 +42,7 @@ def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
-def atdata(update, comtext):
+def atdata():
     return list_of_records[0]
 
 def error(update, context):
@@ -63,7 +63,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("AT?", atdata))
+    dp.add_handler(CommandHandler("AT", atdata))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
