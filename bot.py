@@ -7,7 +7,7 @@ Author: liuhh02 https://medium.com/@liuhh02
 
 import logging
 from typing import Optional
-from airtable import Airtable, airtable
+from airtable import Airtable
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 
@@ -16,7 +16,7 @@ PORT = int(os.environ.get('PORT', 5000))
 TOKEN = os.environ['TOKEN']
 ATOKEN = os.environ['AtTOKEN']
 
-at = airtable.Airtable("app3ZcWgMxjYLSeE7", "Design projects", ATOKEN)
+at = Airtable("app3ZcWgMxjYLSeE7", "Design projects", ATOKEN)
 list_of_records = at.get_all(view='All projects',sort='Name')
 
 # Enable logging
