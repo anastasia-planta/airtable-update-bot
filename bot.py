@@ -17,7 +17,7 @@ TOKEN = os.environ['TOKEN']
 ATOKEN = os.environ['AtTOKEN']
 
 at = airtable.Airtable("app3ZcWgMxjYLSeE7", "Design projects", ATOKEN)
-list_of_records = at.get_all()
+list_of_records = at.get_all(view='All projects',sort='Name')
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!' + print(list_of_records))
+    update.message.reply_text('Hi!' + list_of_records)
 
 
 def help(update, context):
