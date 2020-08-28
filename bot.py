@@ -7,11 +7,17 @@ Author: liuhh02 https://medium.com/@liuhh02
 
 import logging
 from typing import Optional
-
+from airtable import Airtable
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 
 PORT = int(os.environ.get('PORT', 5000))
+
+TOKEN = os.environ['TOKEN']
+ATOKEN = os.environ['AtTOKEN']
+
+airtable = Airtable("app3ZcWgMxjYLSeE7", "Design projects", ATOKEN)
+list_of_records = airtable.get_all()
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -19,13 +25,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-TOKEN = os.environ['TOKEN']
-
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Hi!'+ list_of_records[0])
 
 
 def help(update, context):
