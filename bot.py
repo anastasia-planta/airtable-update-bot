@@ -43,7 +43,7 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 def atdata():
-    return list_of_records[0]
+    print(str[list_of_records[0]])
 
 def error(update, context):
     """Log Errors caused by Updates."""
