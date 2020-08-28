@@ -42,9 +42,8 @@ def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
-def atdata():
-    return list_of_records[0]
-    print(list_of_records[0])
+def atdata(update, context):
+    update.message.reply_text(list_of_records[0])
 
 def error(update, context):
     """Log Errors caused by Updates."""
